@@ -66,7 +66,7 @@ export async function deleteContactController(req, res, next) {
   if (result == null) {
     return next(createError(404, 'Contact not found'));
   }
-  res.status(204);
+  res.status(204).send();
 }
 
 export async function patchContactController(req, res, next) {
