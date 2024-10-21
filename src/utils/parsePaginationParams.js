@@ -1,5 +1,5 @@
 function parseNumber(value, defaultValue) {
-  if (typeof value == 'undefined') {
+  if (typeof value != 'string') {
     return defaultValue;
   }
   const parsedValue = parseInt(value);
