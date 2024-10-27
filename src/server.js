@@ -4,12 +4,14 @@ import cors from 'cors';
 import contactsRouts from './routers/contacts.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import authRoutes from './routers/auth.js';
 
 export function setupServer() {
   const app = express();
 
   app.use(cors());
 
+  app.use('/auth', authRoutes);
   app.use('/contacts', contactsRouts);
 
   app.use(notFoundHandler);
