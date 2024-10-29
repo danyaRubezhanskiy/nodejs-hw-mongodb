@@ -1,13 +1,19 @@
 import { Contact } from '../models/contact.js';
 
-export const getAllContacts = async ({ page, perPage, sortBy, sortOrder }) => {
+export const getAllContacts = async ({
+  page,
+  perPage,
+  sortBy,
+  sortOrder,
+  userId,
+}) => {
   const skip = page > 0 ? (page - 1) * perPage : 0;
 
-  console.log({ sortBy, sortOrder });
+  Contact.find().where('userId').equals(userId);
 
   const [total, data] = await Promise.all([
-    Contact.countDocuments(),
-    Contact.find()
+    Contact.countDocuments({ userId }),
+    Contact.find({ userId })
       .sort({ [sortBy]: sortOrder })
       .skip(skip)
       .limit(perPage),
@@ -26,18 +32,20 @@ export const getAllContacts = async ({ page, perPage, sortBy, sortOrder }) => {
   };
 };
 
-export const getContactByID = async (contactId) => {
-  return await Contact.findById(contactId);
+export const getContactByID = async (userId, contactId) => {
+  return await Contact.findOne({ _id: contactId, userId });
 };
 
 export const createContact = (contact) => {
   return Contact.create(contact);
 };
 
-export const deleteContact = (contactId) => {
-  return Contact.findByIdAndDelete(contactId);
+export const deleteContact = (userId, contactId) => {
+  return Contact.findOneAndDelete({ _id: contactId, userId });
 };
 
-export const changeContact = (contactId, contact) => {
-  return Contact.findByIdAndUpdate(contactId, contact, { new: true });
+export const changeContact = (userId, contactId, contact) => {
+  return Contact.findOneAndUpdate({ _id: contactId, userId }, contact, {
+    new: true,
+  });
 };
