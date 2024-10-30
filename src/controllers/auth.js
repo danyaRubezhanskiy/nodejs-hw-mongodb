@@ -38,19 +38,19 @@ export async function loginController(req, res) {
   res.status(200).json({
     status: 200,
     message: 'Successfully logged in an user!',
-    data: { AccessToken: session.accessToken },
+    data: { accessToken: session.accessToken },
   });
 }
 
 export async function logoutController(req, res) {
   const { sessionId } = req.cookies;
 
-  if (typeof sessionId == 'string') {
+  if (typeof sessionId === 'string') {
     await logoutUser(sessionId);
   }
+
   res.clearCookie('refreshToken');
   res.clearCookie('sessionId');
-
   res.status(204).end();
 }
 
