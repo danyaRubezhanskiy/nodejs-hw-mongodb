@@ -9,7 +9,6 @@ import {
 import createError from 'http-errors';
 import { parsePaginationParams } from '../utils/parsePaginationParams.js';
 import { parseSortParams } from '../utils/parseSortParams.js';
-import createHttpError from 'http-errors';
 
 export async function getContactsController(req, res, next) {
   const { page, perPage } = parsePaginationParams(req.query);
