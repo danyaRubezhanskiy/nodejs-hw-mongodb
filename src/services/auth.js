@@ -93,7 +93,7 @@ export async function requestResetPassword(email) {
     { sub: user._id, email: user.email },
     JWT_SECRET,
     {
-      expiresIn: '666m',
+      expiresIn: '555m',
     },
   );
 
