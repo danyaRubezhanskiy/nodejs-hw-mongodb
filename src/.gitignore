@@ -1,3 +1,5 @@
-src/tmp/*
+tmp/*
+!tmp/.gitkeep
 
-!src/tmp/.gitkeep
+public/photos*
+!public/photos/.gitkeep

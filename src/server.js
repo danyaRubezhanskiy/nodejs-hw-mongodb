@@ -1,5 +1,6 @@
 import express from 'express';
 import cors from 'cors';
+import path from 'node:path';
 
 import contactsRouts from './routers/contacts.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
@@ -14,6 +15,8 @@ export function setupServer() {
   app.use(cors());
 
   app.use(cookieParser());
+
+  app.use('/photos', express.static(path.resolve('src', 'public/photos')));
 
   app.use('/auth', authRoutes);
   app.use('/contacts', auth, contactsRouts);
