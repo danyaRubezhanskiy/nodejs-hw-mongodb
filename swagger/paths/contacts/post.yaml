@@ -1,0 +1,75 @@
+tags:
+  - Contacts
+summary: Create a new contact
+operationId: createContact
+description: Create a new contact with the specified details.
+security:
+  - bearerAuth: []
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        required:
+          - name
+          - phoneNumber
+          - email
+          - contactType
+        properties:
+          name:
+            type: string
+            description: 'Name of the contact'
+            example: 'John Doe'
+          phoneNumber:
+            type: string
+            description: 'Phone number of the contact'
+            example: '+123456789'
+          email:
+            type: string
+            description: 'Email address of the contact'
+            example: 'john.doe@example.com'
+          contactType:
+            type: string
+            description: 'Type of contact (e.g., personal, work)'
+            example: 'personal'
+          userId:
+            type: string
+            description: 'ID of the user who owns this contact'
+            example: '507f1f77bcf86cd799439012'
+responses:
+  '201':
+    description: Contact successfully created
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 201
+            message:
+              type: string
+              example: 'Successfully created contact'
+            data:
+              $ref: ../../components/schemas/contacts.yaml
+  '400':
+    description: Invalid request payload
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: 'Invalid request payload'

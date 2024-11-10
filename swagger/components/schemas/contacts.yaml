@@ -1,0 +1,39 @@
+type: object
+required:
+  - _id
+  - phoneNumber
+  - email
+  - contactType
+  - userId
+properties:
+  _id:
+    description: 'Unique identifier of the contact in the database'
+    type: string
+    example: '672e559aefd1ec206c1b77a8'
+
+  name:
+    description: 'Full name of the contact'
+    type: string
+    example: 'Jane Doe'
+
+  phoneNumber:
+    description: 'Primary phone number of the contact'
+    type: string
+    example: '+1-234-567-8901'
+
+  email:
+    description: 'Email address of the contact'
+    type: string
+    format: email
+    example: 'jane.doe@example.com'
+
+  contactType:
+    description: "Type of contact, such as 'personal' or 'business'"
+    type: string
+    enum: ['work', 'home', 'personal']
+    example: 'personal'
+
+  userId:
+    description: 'Unique identifier of the user who owns this contact'
+    type: string
+    example: '5d12345efd1ec206c1b1234a'
