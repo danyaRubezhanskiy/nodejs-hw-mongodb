@@ -1,0 +1,89 @@
+tags:
+  - Contacts
+summary: Update an existing contact
+operationId: updateContact
+description: Update details of an existing contact by ID.
+security:
+  - bearerAuth: []
+parameters:
+  - name: id
+    in: path
+    required: true
+    schema:
+      type: string
+    example: 507f1f77bcf86cd799439011
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        type: object
+        properties:
+          name:
+            type: string
+            description: 'Updated name of the contact'
+            example: 'Jane Doe'
+          phoneNumber:
+            type: string
+            description: 'Updated phone number of the contact'
+            example: '+987654321'
+          email:
+            type: string
+            description: 'Updated email address of the contact'
+            example: 'jane.doe@example.com'
+          contactType:
+            type: string
+            description: 'Updated type of contact (e.g., personal, work)'
+            example: 'work'
+responses:
+  '200':
+    description: Contact successfully updated
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+            - data
+          properties:
+            status:
+              type: integer
+              example: 200
+            message:
+              type: string
+              example: 'Successfully updated contact'
+            data:
+              $ref: ../../../components/schemas/contacts.yaml
+  '400':
+    description: Invalid request payload
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+          properties:
+            status:
+              type: integer
+              example: 400
+            message:
+              type: string
+              example: 'Invalid request payload'
+  '404':
+    description: Contact not found
+    content:
+      application/json:
+        schema:
+          type: object
+          required:
+            - status
+            - message
+          properties:
+            status:
+              type: integer
+              example: 404
+            message:
+              type: string
+              example: 'Contact not found'

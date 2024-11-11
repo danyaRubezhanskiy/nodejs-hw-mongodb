@@ -1,18 +1,25 @@
 import express from 'express';
 import cors from 'cors';
 import path from 'node:path';
-
+import fs from 'fs';
 import contactsRouts from './routers/contacts.js';
 import { notFoundHandler } from './middlewares/notFoundHandler.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import authRoutes from './routers/auth.js';
 import cookieParser from 'cookie-parser';
 import { auth } from './middlewares/auth.js';
+import swaggerUi from 'swagger-ui-express';
+
+const swaggerJsonPath = path.resolve('docs/swagger.json');
+const swaggerDocument = JSON.parse(fs.readFileSync(swaggerJsonPath, 'utf-8'));
 
 export function setupServer() {
   const app = express();
 
   app.use(cors());
+
+  app.use('/api-docs', swaggerUi.serve);
+  app.get('/api-docs', swaggerUi.setup(swaggerDocument));
 
   app.use(cookieParser());
 
