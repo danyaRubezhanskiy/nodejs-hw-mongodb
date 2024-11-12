@@ -15,26 +15,30 @@ parameters:
 requestBody:
   required: true
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         properties:
           name:
             type: string
-            description: 'Updated name of the contact'
-            example: 'Jane Doe'
+            description: 'Name of the contact'
+            example: 'John Doe'
           phoneNumber:
             type: string
-            description: 'Updated phone number of the contact'
-            example: '+987654321'
+            description: 'Phone number of the contact'
+            example: '+123456789'
           email:
             type: string
-            description: 'Updated email address of the contact'
-            example: 'jane.doe@example.com'
+            description: 'Email address of the contact'
+            example: 'john.doe@example.com'
           contactType:
             type: string
-            description: 'Updated type of contact (e.g., personal, work)'
-            example: 'work'
+            description: 'Type of contact (e.g., personal, work)'
+            example: 'personal'
+          isFavourite:
+            type: boolean
+            description: 'Is contact favourite or not'
+            example: 'true'
 responses:
   '200':
     description: Contact successfully updated

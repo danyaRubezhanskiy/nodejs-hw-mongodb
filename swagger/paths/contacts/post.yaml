@@ -8,7 +8,7 @@ security:
 requestBody:
   required: true
   content:
-    application/json:
+    multipart/form-data:
       schema:
         type: object
         required:
@@ -33,6 +33,10 @@ requestBody:
             type: string
             description: 'Type of contact (e.g., personal, work)'
             example: 'personal'
+          isFavourite:
+            type: boolean
+            description: 'Is contact favourite or not'
+            example: 'true'
           userId:
             type: string
             description: 'ID of the user who owns this contact'
