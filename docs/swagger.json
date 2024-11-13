@@ -166,6 +166,10 @@
                     "type": "boolean",
                     "description": "Is contact favourite or not",
                     "example": "true"
+                  },
+                  "photo": {
+                    "type": "string",
+                    "description": "Contact photo"
                   }
                 }
               }
@@ -274,7 +278,6 @@
                 "required": [
                   "name",
                   "phoneNumber",
-                  "email",
                   "contactType"
                 ],
                 "properties": {
@@ -303,10 +306,9 @@
                     "description": "Is contact favourite or not",
                     "example": "true"
                   },
-                  "userId": {
+                  "photo": {
                     "type": "string",
-                    "description": "ID of the user who owns this contact",
-                    "example": "507f1f77bcf86cd799439012"
+                    "description": "Contact photo"
                   }
                 }
               }
@@ -477,15 +479,6 @@
               "example": "asc"
             },
             "description": "Order of sorting - 'asc' for ascending, 'desc' for descending."
-          },
-          {
-            "name": "userId",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "type": "string"
-            },
-            "description": "Filter contacts by the user's ID (optional, based on your implementation)."
           }
         ],
         "responses": {
@@ -580,7 +573,6 @@
         "required": [
           "_id",
           "phoneNumber",
-          "email",
           "contactType",
           "userId"
         ],
