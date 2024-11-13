@@ -39,6 +39,9 @@ requestBody:
             type: boolean
             description: 'Is contact favourite or not'
             example: 'true'
+          photo:
+            type: string
+            description: 'Contact photo'
 responses:
   '200':
     description: Contact successfully updated

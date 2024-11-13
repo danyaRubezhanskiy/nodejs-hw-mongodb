@@ -37,10 +37,9 @@ requestBody:
             type: boolean
             description: 'Is contact favourite or not'
             example: 'true'
-          userId:
+          photo:
             type: string
-            description: 'ID of the user who owns this contact'
-            example: '507f1f77bcf86cd799439012'
+            description: 'Contact photo'
 responses:
   '201':
     description: Contact successfully created

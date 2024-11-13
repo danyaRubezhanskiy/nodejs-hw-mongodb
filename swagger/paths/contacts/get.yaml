@@ -35,12 +35,6 @@ parameters:
       enum: [asc, desc]
       example: 'asc'
     description: Order of sorting - 'asc' for ascending, 'desc' for descending.
-  - name: userId
-    in: query
-    required: false
-    schema:
-      type: string
-    description: Filter contacts by the user's ID (optional, based on your implementation).
 responses:
   '200':
     description: List of contacts with pagination metadata
