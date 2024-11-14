@@ -169,7 +169,8 @@
                   },
                   "photo": {
                     "type": "string",
-                    "description": "Contact photo"
+                    "description": "Contact photo",
+                    "format": "binary"
                   }
                 }
               }
@@ -308,7 +309,8 @@
                   },
                   "photo": {
                     "type": "string",
-                    "description": "Contact photo"
+                    "description": "Contacts photo",
+                    "format": "binary"
                   }
                 }
               }
